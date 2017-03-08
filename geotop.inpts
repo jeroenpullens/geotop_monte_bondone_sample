@@ -1,0 +1,282 @@
+!*******************************
+!******* CONFIGURATION *********
+!*******************************
+TimeStepEnergyAndWater = 3600
+InitDateDDMMYYYYhhmm = 01/09/2011 00:00
+EndDateDDMMYYYYhhmm = 01/01/2012 00:00
+EnergyBalance = 1
+WaterBalance=1 
+PointSim =0
+
+!Recovery files settings
+!RecoverSim = 30
+
+!*******************************
+!********* GEOGRAPHY ***********
+!*******************************
+Latitude = 46.017723
+Longitude= 11.04095
+
+!*******************************
+!****** METEO STATIONS *********
+!*******************************
+NumberOfMeteoStations =  1
+! first peatland
+MeteoStationCoordinateX= 657964 
+MeteoStationCoordinateY= 5098029
+MeteoStationElevation= 1561
+MeteoStationLatitude= 46.017711
+MeteoStationLongitude= 11.040919
+MeteoStationStandardTime= 1 
+MeteoStationWindVelocitySensorHeight= 1.5
+MeteoStationTemperatureSensorHeight= 1.5
+
+MeteoFile = "./meteo/peatland_gapfilled_wind_SWD_prec_hourly"
+
+!#######  header ##########
+HeaderDateDDMMYYYYhhmmMeteo = "Date"
+HeaderIPrec = "Precipitation"
+HeaderWindVelocity = "wind_speed"
+HeaderWindDirection = "wind_dir"
+HeaderRH = "Rotronic_RH"
+HeaderAirTemp = "Rotronic_Air_Temperature"
+!HeaderCloudSWTransmissivity
+HeaderLWin = "LwD"
+!HeaderSWnet 
+HeaderSWglobal =  "CNR_SwD"
+!HeaderSWdirect 
+!HeaderSWdiffuse = "CNR_SwD"
+!HeaderDewTemp = "dewtemp"
+
+
+!*******************************
+!******* SIM. POINTS ***********
+!*******************************
+PointFile = "ListPoints_new"
+
+!#######  header ##########
+HeaderPointID = "ID"
+HeaderCoordinatePointX = "Xwgs"
+HeaderCoordinatePointY = "Ywgs"
+
+!*******************************
+!******* HORIZON  *********
+!*******************************
+HorizonPointFile="hor_points/horizon"
+HorizonMeteoStationFile="_horizon/horizon"
+
+HeaderHorizonAngle="azimuth"
+HeaderHorizonHeight="horizon_ele"
+
+!*******************************
+!******* INPUT MAPS ************
+!*******************************
+DemFile = 	       "25/with_border/merged_WB"
+LandCoverMapFile =     "25/with_border/4_soils_no_river"
+RiverNetwork =         "25/with_border/prova_idr_WB"
+SoilMapFile =          "25/with_border/4_soils_no_river_complete"
+SlopeMapFile=	       "25/with_border/catchment_slop"
+AspectMapFile=	       "25/with_border/Aspect_WB"
+SkyViewFactorMapFile = "25/with_border/skyviewfactor"
+
+!*******************************
+!******** LAND COVER  **********
+!*******************************
+NumLandCoverTypes = 4
+!#######  param ##########
+SoilRoughness=10,10,10,10
+ThresSnowSoilRough=10,10,10,10
+VegHeight= 200,300,300,300
+ThresSnowVegUp=50,50,50,50
+ThresSnowVegDown= 10,10,10,10
+RootDepth=100,300,300,300
+LSAI= 1,1,2.5,1
+CanopyFraction= 0.95,0.95,0.95,0.95
+VegReflectVis=0.15,0.15,0.4,0.15
+VegReflNIR=0.4,0.4,0.4,0.4
+VegTransVis=0.07,0.07,0.07,0.07
+VegTransNIR=0.32,0.32,0.32,0.32
+VegSnowBurying= 1,1,1,1
+SoilEmissiv  =0.99,0.99,0.99,0.99
+
+!*******************************
+!*******  SOIL TYPE ************
+!*******************************
+SoilParFile = "soil_NEW/soil"
+SoilLayerTypes = 4
+!#######  header ##########
+HeaderSoilDz = "Dz"
+HeaderLateralHydrConductivity = "Kh"
+HeaderNormalHydrConductivity = "Kv"
+HeaderThetaRes = "res"
+HeaderFieldCapacity = "fc"
+HeaderThetaSat = "sat"
+HeaderAlpha = "a"
+HeaderN = "n"
+HeaderSpecificStorativity = "SS"
+
+!#######  param ##########
+ThermalConductivitySoilSolids = 2.5
+!ThermalCapacitySoilSolids = 2.25E6
+FrozenSoilHydrCondReduction =1
+RichardTol	=	1.E-8
+RichardInitForc = 1E-2
+MinLambdaWater = 1.E-8
+RichardMaxIter	=	1E3
+ExitMinLambdaWater = 1
+MinTimeStep = 1
+FreeDrainageAtLateralBorder =1
+
+DDland=1
+
+!*******************************
+!************ SNOW *************
+!*******************************
+InitSWE=0
+InitSnowDensity=100.0
+InitSnowTemp=0
+InitSnowAge=0
+ThresTempRain=3
+ThresTempSnow=0
+DewTempOrNormTemp=0
+AlbExtParSnow=10.0  
+! quando la neve arriva a 10 cm, fa una media con quella del suolo
+FreshSnowReflVis=0.95
+FreshSnowReflNIR=1
+IrriducibleWatSatSnow=0.02
+SnowEmissiv=0.98
+SnowRoughness=0.1
+SnowCorrFactor=0.6
+RainCorrFactor=1
+MaxSnowPorosity=0.25
+DrySnowDefRate=1.0
+SnowDensityCutoff=500.0
+WetSnowDefRate=1.5
+SnowViscosity=1.0E+6
+
+MaxWaterEqSnowLayerContent = 1
+MaxSnowLayersMiddle = 1
+SWEbottom = 1
+SWEtop = 50
+
+!=======================================
+! CHANNELS
+!=======================================
+
+RatioChannelWidthPixelWidth	=	0.02
+!SurFlowResExp			         =0.5
+!ChannelDepression	=	1
+
+!ThresWaterDepthLandInf = 5
+!ThresWaterDepthLandSup = 50
+!SurFlowResChannel = 20
+!ThresWaterDepthChannel = 100
+
+
+!*******************************
+!******** LAPSE RATES **********
+!*******************************
+!LapseRateFile="LapseRates"
+!HeaderDateDDMMYYYYhhmmLapseRates="Date"
+!HeaderLapseRateTemp="dTa_dz"
+!HeaderLapseRateDewTemp="dTd_dz"
+!HeaderLapseRatePrec="dprec_dz"
+
+LapseRatePrec = -0.2
+LapseRateTemp = 6.5
+LapseRateSnow = 2
+PresCorrFactor = 2
+
+!*******************************
+!******* INIT. CONDIT **********
+!*******************************
+InitWaterTableDepth = 10
+InitWaterTableHeightOverTopoSurface = 10
+InitSoilTemp = 50
+
+MoninObukhov = 1
+Surroundings =1
+BussingerMaxIter = 5
+
+!*******************************
+!********** NUMERICS ***********
+!*******************************
+HeatEqTol=1.00E-04
+HeatEqMaxIter=700
+
+!=============================================================================
+!  OUTPUT TIME SERIES
+!=============================================================================
+
+SoilPlotDepths= 0.05,0.1,0.2,0.5,1,1.5,2,2.5,3,4,10
+
+DtPlotPoint = 1
+DtPlotDischarge = 1
+
+DtPlotBasin = 24
+BasinAll = 1
+BasinOutputFile = "output_tabs/basin" 
+
+PointOutputFile = "output_tabs/point"
+PointAll=1
+
+SoilAveragedLiqContentProfileFile="output_tabs/soilavgliq"
+SoilLiqContentProfileFile="output_tabs/soilliq"
+SoilTempProfileFile="output_tabs/soiltemp"
+SnowTempProfileFile="output_tabs/snowtemp"
+SnowLiqContentProfileFile="output_tabs/snowliq"
+SnowIceContentProfileFile="output_tabs/snowice"
+SnowDepthLayersFile="output_tabs/snowly"
+SoilLiqWaterPressProfileFile="output_tabs/soilliqpres"
+SnowAll=1
+
+SWEMapFile= "output_maps/SWE"
+SnowDepthMapFile = "output_maps/snowdepth"
+FirstSoilLayerAveragedTempMapFile="output_maps/MMGST"
+NetShortwaveRadiationMapFile = "output_maps/Rn"
+DischargeFile = "output_tabs/discharge"
+
+! added to debug netCDF
+OutputSnowMaps = 24
+OutputSoilMaps=24
+!OutputSurfEBALMaps=1
+!SWEMapFile= "output_maps/SWE"
+
+SoilAll=1
+SoilAveragedTempTensorFile = "output_maps/T"
+SoilLiqContentTensorFile = "output_maps/thetaliq"
+IceLiqContentTensorFile = "output_maps/thetaice"
+SoilLiqWaterPressTensorFile = "output_maps/psiz"
+
+RadiationMapFile= "output_maps/Rad"
+InShortwaveRadiationMapFile= "output_maps/SWin"
+InLongwaveRadiationMapFile= "output_maps/LWin"
+NetRadiationMapFile= "output_maps/RadNet"
+SurfaceLatentHeatFLuxMapFile ="output_maps/Latentheat"
+SurfaceSensibleHeatFLuxMapFile ="output_maps/Sensibleheat"
+WaterTableDepthFromAboveMapFile="output_maps/Watertablefromabove"
+WaterTableDepthMapFile="output_maps/Watertabledepth"
+LandSurfaceWaterDepthMapFile="output_maps/LandSurfaceWaterDepth"
+ChannelSurfaceWaterDepthMapFile="output_maps/ChannelSurfaceWaterDepth"
+AirTempMapFile="output_maps/AirTemp"
+PrecipitationMapFile="output_maps/Precipitation"
+EvapotranspirationFromSoilMapFile="output_maps/EvapotranspirationFromSoil"
+
+
+
+!=============================================================================
+!  RECOVERY FILE NAMES
+!=============================================================================
+
+! [recovery]
+ SubfolderRecoveryFiles="rec"
+ ContinuousRecovery=10
+! every 100 days does an update of the simulation
+! when you launch it again, it starts from the last recovery
+! RunIfAnOldRunIsPresent=1
+! se c'e' questa keywordk, rifa la simulazione anche se 
+! c'e' un failed run o un successful run
+! altrimenti, se c'e' un successfulrun o un failed run 
+! da un messaggio di errore
+! RecoverSim = 15
+! SavingPoints = 100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400

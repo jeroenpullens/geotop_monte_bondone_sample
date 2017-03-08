@@ -1,0 +1,12 @@
+! Horizon file for met station or point #1 
+! All measures in degrees
+
+azimuth,horizon_ele
+0      0.606655
+45     14.305644
+90      2.118203
+135      2.383239
+180      1.248233
+225      4.140455
+270      2.933923
+315      0.000000
